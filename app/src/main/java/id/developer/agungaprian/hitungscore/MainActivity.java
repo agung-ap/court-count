@@ -1,7 +1,7 @@
 package id.developer.agungaprian.hitungscore;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,18 +11,23 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.plus_3_a)
-    private Button plus3TeamA;
+    Button plus3TeamA;
     @Bind(R.id.plus_2_a)
-    private Button plus2TeamA;
+    Button plus2TeamA;
     @Bind(R.id.plus_1_a)
-    private Button  freeThrowTeamA;
+    Button  freeThrowTeamA;
 
     @Bind(R.id.plus_3_b)
-    private Button plus3TeamB;
+    Button plus3TeamB;
     @Bind(R.id.plus_2_b)
-    private Button plus2TeamB;
+    Button plus2TeamB;
     @Bind(R.id.plus_1_b)
-    private Button freeThrowTeamB;
+    Button freeThrowTeamB;
+
+    @Bind(R.id.team_a)
+    TextView namaTeamA;
+    @Bind(R.id.team_b)
+    TextView namaTeamB;
 
     private Button resetScore;
     private TextView scoreTeamA , scoreTeamB;
@@ -51,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
                 scoreTeamB.setText(String.valueOf(scoreB));
             }
         });
+
+        //display nama team
+        Bundle bundle = getIntent().getExtras();
+        namaTeamA.setText((CharSequence) bundle.get("team_a"));
+        namaTeamB.setText((CharSequence) bundle.get("team_b"));
 
         setScoreTeamA();
         setScoreTeamB();
